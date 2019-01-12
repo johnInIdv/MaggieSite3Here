@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Exploration</title>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="d3v4+jetpack.js">
+
+    </script>
+
+    <style media="screen">
+    #tooltip{
+      display: none;
+      position: absolute;
+      padding: 10px;
+      border: 1px;
+      border-color: black;
+      font-size: 16px;
+      font-family: sans-serif;
+      border-width: 1px;
+      background-color: gray;
+      color: white;
+      border-style: solid;
+      border-radius: 5px;
+    }
+    #xAxis{
+      font-size: 12px;
+    }
+    #yAxis{
+      font-size: 12px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <div class="">
+      <ol>
+        <li>136 circles: every #1 v #16 March Madness game since 1985</li>
+        <li>Blue circles: #1 seed wins</li>
+        <li>Red circles: #16 seed win</li>
+        <li>Y-axis: #16 seed score</li>
+        <li>X-axis: #1 seed score</li>
+        <li>Black bars below: average points scored by losing seed in all games played
+        by a #1 seed.</li>
+      </ol>
+
+    </div>
+
+    <svg id="viz">
+      <g id="xAxis"></g>
+      <g id="yAxis"></g>
+    </svg>
+
+
+<h2>Shows the total number of times each seed has played a #1 seed (far right is #16)</h2>
+    <svg id="viz2" style="padding: 0px 0px 100px 200px">
+      <g id="gViz2"></g>
+      <g id="xAxis2"></g>
+    </svg>
+
+<h2>Shows the total percentage of points by each seed when playing a #1 seed (far right is #16)</h2>
+    <svg id="viz3" height='500' width='500' style="padding: 0px 0px 50px 50px">
+      <g id="gViz3"></g>
+      <g id="xAxis3"></g>
+    </svg>
+
+    <div id="tooltip"></div>
+
+    <script>
+    var svg = d3.select('#viz').attr('width', 500).attr('height', 500);
+    var svg2 = d3.select('#viz2').attr('width', 500).attr('height', 200);
+// Row converter for All games data
+    var rowConverter = function(d){
+        return {
+          Point_Diff: parseFloat(d.Point_Diff),
+          Winning_Seed: parseFloat(d.Winning_Seed),
+          Winner: d.Winner,
+          Loser: d.Loser,
+          Losing_Seed: parseFloat(d.Losing_Seed),
+          Winning_Score: parseFloat(d.Winning_Score),
+          Losing_Score: parseFloat(d.Losing_Score),
+          Date: d.Date
+        };
+    };
+// Row converter for Percent of points Data
+  var rowConverter2 = function(d){
+    return {
+      rank: parseFloat(d.rank),
+      percentPoints: parseFloat(d.percentPoints),
+      losingAve: parseFloat(d.losingAve),
+      winningAve: parseFloat(d.winningAve),
+      numberGames: parseFloat(d.numberGames)
+    };
+}
+// All games data
+    d3.csv("MarchMadness16v1.csv", rowConverter, function(error,data) {
+      console.log(data);
+      // x-Axis which is winning score score
+            var maxWinningScore = d3.max(data, function(d){
+              return d.Winning_Score;
+            });
+            var padding = 50;
+            var xScale = d3.scaleLinear()
+                  .domain([0, maxWinningScore + 10])
+                  .range([padding,400]);
+
+            var xAxis = d3.axisBottom(xScale);
+                  d3.select('g#xAxis')
+                    .attr("transform", "translate(0, 400)")
+                    .call(xAxis);
+      // y-Axis which is the losing score
+            var maxLosingScore = d3.max(data, function(d){
+              return d.Losing_Score;
+            });
+            var yScale = d3.scaleLinear()
+                  .domain([maxLosingScore + 10, 0])
+                  .range([padding,400]);
+                      // .range([padding,window.innerHeight - padding * 2]);
+            // d3.select("svg")
+            //       .attr("width", window.innerWidth)
+            //       .attr("height", window.innerHeight);
+            var yAxis = d3.axisLeft()
+                        .scale(yScale);
+                  d3.select('g#yAxis')
+                    .attr("transform", "translate(50, 0)")
+                    .call(yAxis);
+
+// Making the Scatterplot
+    d3.select('#viz').selectAll('circle').data(data).enter()
+              .append('circle')
+              .attr('cx', function(d,i){
+                return xScale(d.Winning_Score);
+              })
+              .attr('cy', function(d){
+                return yScale(d.Losing_Score);
+              })
+              .attr('r', function(d){
+                if (d.Winning_Seed == 16){
+                  return 4;
+                }
+                else {
+                  return 4;
+                };
+              })
+              .attr('fill', function(d, i){
+                if (d.Winning_Seed < 16){
+                  return "blue";
+                }
+                else {
+                  return "red";
+                }
+              })
+    // Setting up the Tooltip
+              .on("mouseenter", function(d){
+                d3.select("#tooltip")
+                  .style("display", "block")
+                  .style("top","130px")
+                  .style("left", xScale(d.distance) + "px")
+                  .text("Date: " + d.Date + "; Losing Team: " + "#" + d.Losing_Seed + " " + d.Loser +
+                   "; Winning Team: " + "#"
+                        + d.Winning_Seed + " " + d.Winner + "; Score: " + d.Losing_Score + " to " + d.Winning_Score);
+              })
+              .on("mouseleave", function(d){
+                d3.select("#tooltip")
+                .style("display", "none");
+              })
+  });
+
+  // Bar graphs
+    var barPadding = 3;
+    var w = 1000;
+    var h = 200;
+
+    // Number of Games X and Y Scales
+    var xScaleNumGames = d3.scaleBand()
+            .domain(d3.range(14))
+            .range([0,400])
+            .paddingInner(0.05);
+
+    var xScaleSeeds = d3.scaleBand()
+            .domain([1,2,3,4,5,6,7,8,9,10,11,12,13,16])
+            .range([0,400])
+            .paddingInner(0.05);
+
+    var yScaleNumGames = d3.scaleLinear()
+            .domain([0,140])
+            .range([0,500])
+
+// Bar graph with Number of games played
+var numGames = d3.csv("1seedsvAll.csv", rowConverter2, function(error,data) {
+    console.log(data)
+
+// Number of games X and Y axis
+    var xAxisNumGames = d3.axisBottom()
+                          .scale(xScaleSeeds);
+
+      d3.select('#viz2').append('g')
+            .attr('class','axis')
+            .attr('transform','translate(-5,' + (h) + ')')
+            .call(xAxisNumGames);
+
+      d3.select('#gViz2').selectAll('rect').data(data).enter()
+          .append('rect')
+          .attr('x',function(d,i){
+            return xScaleNumGames(i);
+// use xScale here
+// use an ordinal scale to use specific number for bottom of scale
+    })
+    .attr('y', function(d){
+      return (h - d.numberGames);
+    })
+    // .attr('width', w / data.length - barPadding)
+        .attr('width', 20)
+    .attr('height', function(d){
+      return (d.numberGames);
+    })
+
+
+
+    // Adding labels to Number of games
+
+var textNumGames = d3.select('#gViz2').selectAll('text').data(data).enter().append('text');
+
+var textNumGamesLabelTop = textNumGames
+
+          .attr('x', function(d,i){
+            return xScaleNumGames(i) + 10;
+          })
+          .attr("text-anchor", "middle")
+          .attr('y', function(d){
+            return (h - (d.numberGames + 2));
+          })
+          .text(function(d,i){
+                        return (d.numberGames);})
+          .attr('fill','red')
+          .attr("font-family", 'san-serif')
+          .attr('font-size', '15px');
+
+})
+
+// Percent Point Scored bar graph
+    d3.csv("1seedsvAll.csv", rowConverter2, function(error,data) {
+        console.log(data)
+      d3.select('#gViz3').selectAll('rect').data(data).enter()
+        .append('rect')
+        .attr('x',function(d,i){
+          return xScaleNumGames(i);
+        })
+        .attr('y', function(d){
+          return (h - d.percentPoints * 100);
+        })
+        // .attr('width', w / data.length - barPadding)
+        .attr('width', 20)
+        .attr('height', function(d){
+          return (d.percentPoints * 100);
+        });
+
+  var textPercentPoint = d3.select('#gViz3').selectAll('text').data(data).enter().append('text');
+
+  var textPercentPointLabel = textPercentPoint
+            // .attr('x', 200)
+            // .attr('y', 200)
+            .attr('x',function(d,i){
+              return xScaleNumGames(i) + 2;
+            })
+            .attr('y', function(d){
+              return (h - d.percentPoints * 100 - 3);
+            })
+            .text(function(d,i){
+                return Math.round(d.percentPoints * 100) + "%";
+            })
+            // .format(".0%")
+            .attr('fill','red')
+            .attr("font-family", 'san-serif')
+            .attr('font-size', '11px');
+
+    var xAxisNumGames = d3.axisBottom()
+                          .scale(xScaleSeeds);
+
+      d3.select('#viz3').append('g')
+            .attr('class','axis')
+            .attr('transform','translate(-5,' + (h) + ')')
+            .call(xAxisNumGames);
+})
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,187 @@
+body{
+  /* max-width: 100%; */
+  margin: 0px auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* from W3 */
+body, html {
+    height: 100%;
+    width:100%;
+    color: black;
+    line-height: 1.8;
+    background-color: rgb(144, 125, 99)
+    /* background-image: url('basket_ball_court_textura.jpg'); */
+
+}
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1 {
+        background-attachment: scroll;
+    }
+}
+
+/* end from W3 */
+
+.shoutOut {
+  fill: black;
+}
+
+.bgimg-1 {
+        background-image: url('david_and_goliath_by_themico2.png');
+        min-height: 100%;
+        width: 100%;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+  }
+
+h1 {
+  margin: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+#container {
+  position: relative;
+  padding-top: 50px;
+}
+
+#sections {
+  width: 340px;
+  padding: 100px 0px 50px 100px;
+
+}
+
+#sections > div {
+  background: #f5f3f0;
+  opacity: .2;
+  margin-bottom: 300px;
+  padding: 10px;
+  border-radius: 5px;
+}
+#sections > div:last-child {
+  margin-bottom: 30px;
+}
+#sections > div.graph-scroll-active {
+  opacity: 1;
+}
+
+#graph {
+  margin-left: 40px;
+  width: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  float: right;
+}
+
+#graph2 {
+  margin-left: 40px;
+  width: 50%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  float: right;
+}
+
+.axis{
+  padding-left: 100px;
+}
+
+@media (max-width: 925px)  {
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections {
+    width: auto;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  #sections > div {
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 80vh;
+  }
+
+  pre {
+    overflow: hidden;
+  }
+
+  h1 {
+    margin: 10px;
+  }
+}
+
+
+
+.mono{
+  font-family: monospace;
+}
+
+
+.Image {
+      margin-top: 0px;
+      color: gray;
+      opacity: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      align-content: center;
+    }
+
+
+.blackBackground {
+          background-color: rgba(0,0,0, 0.5);
+          padding: 30px 10px 30px 10px;
+          width: 80%;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          align-content: center;
+          border-radius: 5px;
+        }
+
+h1.EastBoston_head {
+    font-family: "GrifoL-Bold","Georgia",serif;
+    font-size: 4rem;
+    line-height: 4rem;
+    /* margin-top: 10%; */
+}
+
+.winStreak {
+  font-size: 35px;
+}
+
+#tooltip{
+  display: none;
+  position: absolute;
+  padding: 10px;
+  border: 1px;
+  color: black;
+  border-color: black;
+  font-size: 16px;
+  font-family: sans-serif;
+  border-width: 1px;
+  background-color: rgb(144, 125, 99, 0.5);
+  border-style: solid;
+  border-radius: 5px;
+}
