@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="mapdata.js"></script>
+      <script src="mapdataBackground.js"></script>
+      <script src="usmap.js"></script>
+    <script src="../addons/p5.min.js"></script>
+    <script src="../addons/p5.dom.min.js"></script>
+    <script src="../addons/p5.sound.min.js"></script>
+    <script src="10-01.js"></script>
+    <link rel="stylesheet" href="cigViz.css">
+
+
+  </head>
+  <body>
+    <h1 id="title">Cigarette Trends Since 1970</h1>
+      <div class="row">
+          <div class="col-sm-9">
+            <h3 style="zIndex:999;position:relative;top: 90px; left:400px;">Hover over states to see individual graphs.</h3>
+            <div class="canvas" id="container">
+              <div class="canvas" id="canvas1"></div>
+              <div class="canvas" id="map"></div>
+              <div class="canvas" id="mapBackground">
+                <img src="us.svg" style="width: 1100px; height:auto;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3" class="sixButtonsGroup">
+            <h3 id="buttonPrompt">Buttons below will graph all 50 states.</h3>
+            <button type="button" name="button" id="clearButton" onclick="refreshPage()">Clear the Map</button>
+            <img src="images/perPackLight.png" class="container" id="perPack" onclick="PerPacks()">
+            <img src="images/consumptionLight.png" class="container"id="consumption" onclick="Consumption()">
+            <img src="images/stateTaxLight.png" class="container" id="state" onclick="State()">
+            <img src="images/grossTaxLight.png" class="container" id="gross" onclick="GrossTax()">
+            <img src="images/fedStatePerPackLight.png" class="container"id="fedStatePack" onclick="FedStatePack()">
+            <img src="images/fedStatePercentLight.png" class="container"id="percent" onclick="FedStatePercent()">
+        </div>
+      </div>
+
+    <div class="footer">
+      <p id="footerP">Dataset represents 14,688 points of data about trends related to cigarette cost, consumption and taxes in all 50 states
+        and the District of Columbia between 1970 and 2017. The full dataset can be found
+        here: <a href="https://healthdata.gov/dataset/tax-burden-tobacco-1970-2017" style="color:#fbbf50">Full Dataset.</a></p>
+    </div>
+  </body>
+</html>

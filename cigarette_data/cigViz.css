@@ -1,0 +1,121 @@
+
+.container {
+  position: relative;
+  top:75px;
+  width: 155px;
+  max-width: 400px;
+}
+.container img {
+  height: auto;
+}
+
+.container .btn:hover {
+  background-color: black;
+}
+
+.tt_sm{border-radius: 5px; height: 400px; width: 600px; box-shadow: 3px 3px 4px rgba(0,0,0,.5); z-index: 1000000;   background-color: gray;   padding: 7px; opacity:1; font: 12px/1.5 Verdana, Arial, Helvetica, sans-serif; color: black;}
+.tt_name_sm{float: left; font-weight: bold}
+.xmark_sm{float: right; margin-left: 5px; cursor: pointer; line-height: 0px;}
+.tt_custom_sm{}
+.tt_mobile_sm{margin-top: 5px;}
+.btn_simplemaps{color: black;text-decoration: none;background: #ffffff;display: inline-block;padding: 5px 5px;margin: 0; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; line-height: 1.43;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;border: 1px solid;border-radius: 4px;}
+.btn_simplemaps:hover{text-decoration: underline;}
+
+body {padding: 0; margin: 0; background-color: #BFBFBF;}
+
+h1 {text-align: center;
+    /* background-color: #d13c12; */
+    background-image: url("images/cigarette4.png"); /*background color is #BFBFBF*/
+    /* background-color: #cccccc; */
+    /* height: 500px; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    height: 100px;
+    width: 110%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0px;
+    z-index: 999;
+
+}
+
+.col-sm-9 {
+  /* position: absolute; */
+  width: 75%;
+}
+
+.col-sm-3 {
+  /* position: relative; */
+  width: 25%;
+}
+
+.canvas {
+  position: absolute;
+  margin-top: 100;
+}
+
+.sixButtonsGroup {position:absolute;}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 60px;
+   border-color: black;
+   border-width: 2px;
+   /* background-color: #fccf7a; */
+   background-color: #808080;
+   color: black;
+   text-align: center;
+   z-index: 999;
+}
+
+#footerP {
+  padding-top: :10px;
+  padding-left: 250px;
+  padding-right: 250px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#buttonPrompt {
+  width:80%;
+  position:relative;
+  left:60px;
+  top:110px;
+}
+
+#clearButton{
+  top:130px;
+  position: relative;
+  width:80%;
+  left:25px;
+  margin-bottom:20px;
+  background-color: #fbbf50;
+  border-radius: 5px;
+  border-width: 5px;
+  font-weight: bold;
+}
+
+#perPack{float:left;}
+#consumption{float:right;right:20px;}
+#state{float:left;}
+#gross{float:right;right:20px}
+#fedStatePack{float:left;}
+#percent{float:right;right:20px;}
+
+.container {
+  /* margin-top: 10px; */
+  position: relative;
+  height:160px;width:auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  top:120px;
+}
+
+#container{
+  top:90px;
+}
