@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://d3js.org/d3.v4.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+
+
+
+<script src="d3v4+jetpack.js"></script>
+<script src="graph-scroll.js"></script>
+<script src="brackets.js"></script>
+<link rel="stylesheet" type="text/css" href="EastBoston_styles.css">
+<link rel="stylesheet" type="text/css" href="index2.css">
+
+</head>
+<body>
+
+<!-- <div id="frontPage" style="height:100vh; background-color: red">
+    <h1>The Madness of March Madness</h1>
+    <h1>A most unusual event in 2018 March Madness</h1>
+
+</div> -->
+
+<div class="bgimg-1 w3-display-container Image">
+  <div class="blackBackground">
+    <h1 class="EastBoston_head opening_line" style="color: white">The Ultimate Underdogs</h1>
+    <h3 class="EastBoston_head opening_line" style="color: white">How College Basketball Gives Us Four <br>Real Life Davd and Goliath
+    Stories every March.</h3>
+  </div>
+</div>
+
+<div id='container' class='container-1' >
+
+  <div id='graph'>
+    <!-- <svg id="svg" width="900" height="800"  style="margin-right: 100px; background-image: url('basket_ball_court_textura.jpg')"> -->
+      <svg id="svg" width="900" height="800"  style="margin-right: 100px; background-image: url('basketballCourt.jpg');
+      border-radius:40px;">
+      <defs>
+        <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+          <image xlink:href="Alabama_logo.gif" x="0" y="0" width="100" height="100" />
+        </pattern>
+      </defs>
+
+    </svg>
+  </div>
+
+  <div id='sections'>
+
+    <div>
+      <h3>What is March Madness?</h3>
+      There are 351 NCAA men's basketball teams. Each one of them start the season with an equal chance to play
+      to be the National Champion.
+    </div>
+
+    <div>
+      <h3>Narrowing the Field</h3>
+      Every March since 1985, 64 teams are chosen from the field to compete in a three week tournament known as March Madness.
+    </div>
+
+
+    <div>
+      <h3>The Regions</h3>
+      The 64 teams are split up into four regions.
+    </div>
+
+    <div>
+      <h3>The Rankings</h3>
+      Within each region, teams are ranked from #1 (the best) to #16 (the worst).
+    </div>
+
+    <div>
+      <h3>Reality Check</h3>
+      The #1 seeds are considered the four best teams in the country, but often
+      the #16 seeds get into the tournament on a technicality and are not even
+      among the top 100 teams.
+    </div>
+
+    <div>
+      <h3>And Yet...</h3>
+      they play each other in the opening round of the tournament.
+    </div>
+
+  </div>
+
+</div>
+
+<div class="bgimg-1 w3-display-container Image">
+  <div class="blackBackground">
+    <h1 class="EastBoston_head opening_line" style="color: white">So how do the #16 seeds do?</h1>
+  </div>
+</div>
+
+
+<div id='container' class='container-2'>
+
+    <div id='graph'>
+        <svg id="svg2" width="900" height="800"  style="margin-right: 100px; background-image: url('basketballCourt.jpg');
+        border-radius:40px;">
+        <g id="testP"></g>
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
+        <g id="xAxisFirstGraph"></g>
+
+      </svg>
+
+    <div id="tooltip">  </div>
+
+    </div>
+
+    <div id='sections'>
+
+      <div>
+        <h3>Match Ups</h3>
+    <p>By far, #16 seeds have played more games against #1 seeds than any other seed. There have been
+    136 games between the seeds.</p>
+      </div>
+
+      <div>
+        <h3>This is the Score</h3>
+        <p>This scatterplot shows the scores of all 136 games played between a #1 seed and
+          #16 seed since 1985. The orange dots represent #1 seed victories. The lone red dot
+          is the one victory by a #16 seed.</p>
+      </div>
+      <div>
+        <h3>The Red Dot</h3>
+        <p>On March 15, 2018, after 33 years and 135 consectuvive losses, the unthinkable happened:
+          #16 University of Maryland-Baltimore County (UMBC) beat #1 University of Virginia in Charlotte, NC.</p>
+      </div>
+      <div>
+        <h3>Even More Remarkable</h3>
+        <p>In the previous 135 games, #16 seeds scored just 57 points for every 100 points scored by a #1 seed.
+        In their win, UMBC didn't just win, they won by 20 points.</p>
+      </div>
+      <div>
+        <h3>And the best news of all for #16 seeds...</h3>
+        <p>Scroll down to find out.</p>
+      </div>
+
+    </div>
+</div>
+<div class="">
+  <h1 style="padding: 100px 0 100px 0">
+  See you next March!
+  </h1>
+  <h3 style="padding: 0px 0 0px 100px">John Lilly</h3>
+  <h3 style="padding: 0px 0 100px 100px">Vizualization Technology</h3>
+</div>
+
+
+
+<!-- <script src="johns-update-functions.js"></script> -->
+<script>
+
+var oldWidth = 0
+function render(){
+  if (oldWidth == innerWidth) return
+  oldWidth = innerWidth
+
+  var width = height = d3.select('#graph').node().offsetWidth
+  var r = 40
+
+
+  if (innerWidth <= 925){
+    width = innerWidth
+    height = innerHeight*.7
+  }
+
+// var svg = d3.select('#graph').html('')
+//   .append('svg')
+//     .attrs({width: width, height: height})
+
+  var svg = d3.select('.container-1 #graph #svg').html('')
+    // .append('svg')
+      // .attrs({width: width, height: height})
+
+  var path = svg.append('path')
+
+  var gs = d3.graphScroll()
+      .container(d3.select('.container-1'))
+      .graph(d3.selectAll('.container-1 #graph'))
+      .eventId('uniqueId1')  // namespace for scroll and resize events
+      .sections(d3.selectAll('.container-1 #sections > div'))
+      .offset(innerWidth < 900 ? innerHeight - 30 : 500)
+      .on('active', function(i){
+
+        // 'i' is the current update step (starting at 0)
+        if (i == 0) {
+          update1();
+        }
+        else if (i == 1) {
+          update2(data64);
+        }
+        else if (i == 2) {
+          update3(data64);
+        }
+        else if (i == 3) {
+          update4(dataBrackets);
+        }
+        else if (i == 4) {
+          update5(dataBrackets);
+        }
+        else if (i == 5) {
+          update6(dataBrackets);
+        }
+
+        path.transition().duration(1000)
+
+      })
+
+
+      var svg2 = d3.select('.container-2 #graph #svg2')
+        // .append('svg')
+          // .attrs({width: width, height: height})
+
+      var path2 = svg2.append('path')
+
+        var gs2 = d3.graphScroll()
+            .container(d3.select('.container-2'))
+            .graph(d3.selectAll('container-2 #graph'))
+            .eventId('uniqueId2')  // namespace for scroll and resize events
+            .sections(d3.selectAll('.container-2 #sections > div'))
+            .offset(innerWidth < 900 ? innerHeight - 30 : 500)
+            .on('active', function(i){
+            if (i == 0) {
+              update7();
+            }
+            else if (i == 1) {
+              update8();
+            }
+            else if (i == 2) {
+              update9();
+            }
+            else if (i == 3) {
+              update10();
+            }
+            else if (i == 4) {
+              update11();
+            }
+          })
+// End second chart
+
+
+  d3.select('#source')
+      .styles({'margin-bottom': window.innerHeight - 450 + 'px', padding: '100px'})
+}
+render()
+d3.select(window).on('resize', render)
+
+
+</script>
+
+</body>
